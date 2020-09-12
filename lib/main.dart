@@ -27,7 +27,8 @@ class _HomePageState extends State<HomePage> {
   int computer;
   var computer_Output = '';
   var player_Output = '';
-  var cont = '123';
+  var computer_cont = '';
+  var player_cont = '';
   void play() {
     computer = Random().nextInt(3);
     if (computer == 0)
@@ -36,8 +37,9 @@ class _HomePageState extends State<HomePage> {
       computer_Output = '石頭';
     else
       computer_Output = '布';
-      setState(() {
-      cont = '電腦出$computer_Output vs 你出$player_Output';
+    setState(() {
+      computer_cont = '電腦出$computer_Output';
+      player_cont = '玩家出$player_Output';
     });
     print(computer);
   }
@@ -56,8 +58,21 @@ class _HomePageState extends State<HomePage> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 //Text('test'),
-                Text(cont),
-                //Text(computer_Output),
+                Text(
+                  computer_cont,
+                  style: TextStyle(fontSize: 35.0),
+                ),
+                const SizedBox(
+                  width: 20,
+                ),
+                Text('VS'),
+                const SizedBox(
+                  width: 20,
+                ),
+                Text(
+                  player_cont,
+                  style: TextStyle(fontSize: 35.0),
+                ),
               ],
             ),
             Row(
